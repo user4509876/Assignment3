@@ -2,6 +2,9 @@ import random
 import matplotlib.pyplot as plt
 from collections import Counter
 
+#Value for n
+n=4
+
 def func1(values1):
     x, y = random.sample(values1, 2)
     values1.remove(x)
@@ -20,7 +23,7 @@ def final(counter1):
 counter = {} 
 
 for k in range(100000):
-    output = final(4)
+    output = final(n)
     if output in counter:
         counter[output] = counter[output]+1
     else:
@@ -42,7 +45,3 @@ plt.xlabel('Final Number x')
 plt.ylabel('Count')
 plt.title('Counts of The Final Number x')
 plt.show()
-
-
-
-
