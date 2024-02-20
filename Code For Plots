@@ -1,0 +1,48 @@
+import random
+import matplotlib.pyplot as plt
+from collections import Counter
+
+def func1(values1):
+    x, y = random.sample(values1, 2)
+    values1.remove(x)
+    values1.remove(y)
+    values1.append(abs(x - y))
+    
+def final(counter1):
+    z = list(range(1, counter1 + 1))
+    
+    while len(z) > 1:
+        func1(z)
+    
+
+    return z[0]
+
+counter = {} 
+
+for k in range(100000):
+    output = final(4)
+    if output in counter:
+        counter[output] = counter[output]+1
+    else:
+        counter[output] = 1
+        
+notUnique = sum(1 for x in counter.values() if x > 0)
+        
+
+
+order = dict(sorted(counter.items()))
+
+print("Counts of each final number:", counter)
+print("Number different counts:", notUnique)
+print("Ordered counts of each final number:", order)
+
+
+plt.bar(counter.keys(), counter.values())
+plt.xlabel('Final Number x')
+plt.ylabel('Count')
+plt.title('Counts of The Final Number x')
+plt.show()
+
+
+
+
